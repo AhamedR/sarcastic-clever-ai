@@ -10,14 +10,13 @@ const TelegramBot = require('node-telegram-bot-api');
 const token = process.env.TELEGRAM_TOKEN;
 const bot = new TelegramBot(token, {polling: true});
 
-bot.on('message', async (msg) => {
-  const chatId = msg.chat.id;
-  // const reply = await sendRequestToOpenAI(msg.text)
-
-  bot.sendMessage(chatId, msg.text);
-});
-
 export default async function handler(req, res) {
+  bot.on('message', async (msg) => {
+    const chatId = msg.chat.id;
+    // const reply = await sendRequestToOpenAI(msg.text)
+  
+    bot.sendMessage(chatId, msg.text);
+  });
   res.status(200).json({ name: `Hey this API is inprogress, Thanks for checking! ${process.env.TELEGRAM_TOKEN}` })
 }
 
