@@ -12,9 +12,9 @@ const bot = new TelegramBot(token, {polling: true});
 
 bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
-  const reply = await sendRequestToOpenAI(msg.text)
+  // const reply = await sendRequestToOpenAI(msg.text)
 
-  bot.sendMessage(chatId, reply);
+  bot.sendMessage(chatId, msg.text);
 });
 
 export default async function handler(req, res) {
