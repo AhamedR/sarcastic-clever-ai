@@ -80,6 +80,13 @@
   padding: 4rem 0;
 }
 
+.center h2 {
+  position: relative;
+  margin: 0;
+  padding: 1rem;
+  font-size: 2rem;
+}
+
 .center::before {
   background: var(--secondary-glow);
   border-radius: 50%;
