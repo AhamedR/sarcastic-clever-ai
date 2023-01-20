@@ -2,10 +2,43 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
-
-const inter = Inter({ subsets: ['latin'] })
+import { useState } from 'react'
+import axios from 'axios';
 
 export default function Home() {
+  const [messageHistory, setMessageHistory] = useState(["Start your conversation"])
+  const [message, setMessage] = useState('')
+
+  const handleMessage = (event) => {
+    setMessage(event.target.value)
+  }
+
+  const onSubmit = (event) => {
+    event.stopPropagation()
+    event.preventDefault()
+
+    const newMessage = event.target.message.value
+    messageHistory.push(newMessage)
+    setMessageHistory([...messageHistory])
+    setMessage('')
+
+    axios.get('/api/reply', { params: { message: newMessage} })
+      .then(function (response) {
+        // handle success
+        if (response && response.data) {
+          messageHistory.push(response.data.reply)
+          setMessageHistory([...messageHistory])
+        }
+      })
+      .catch((error) => {
+        // handle error
+        console.log(error);
+      })
+      .finally(() => {
+        // always executed
+      });
+  }
+
   return (
     <>
       <Head>
@@ -18,6 +51,14 @@ export default function Home() {
         <div className={styles.center}>
           <h2>sarcastic-clever-ai</h2>
         </div>
+        <div className={styles.messages}>
+          <ul>
+            {messageHistory.map((message, index) => <li className={styles.message} key={index}>{message}</li>)}
+          </ul>
+        </div>
+        <form onSubmit={onSubmit} className={styles.messageForm}>
+          <input className={styles.messageBox} type='text' name='message' value={message} onChange={handleMessage}/>
+        </form>
       </main>
     </>
   )
