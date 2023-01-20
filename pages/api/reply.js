@@ -11,14 +11,19 @@ const token = process.env.TELEGRAM_TOKEN;
 const bot = new TelegramBot(token, {polling: true});
 
 export default async function handler(req, res) {
-  bot.on('message', async (msg) => {
-    const chatId = msg.chat.id;
-    const reply = await sendRequestToOpenAI(msg.text)
-
-    bot.sendMessage(chatId, msg.text);
-  });
-  console.log(msg.text);
-  res.status(200).json({ name: `Hey this API is inprogress, Thanks for checking! ${process.env.TELEGRAM_TOKEN}` })
+  // bot.on('message', async (msg) => {
+  //   const chatId = msg.chat.id;
+  
+  //   bot.sendMessage(chatId, msg.text);
+  // });
+  const message = req.body.message.text
+  const reply = ''
+  // const reply = await sendRequestToOpenAI(message)
+  console.log(req, message, reply);
+  const ret = await fetch(
+    `https://api.telegram.org/bot${token}/sendMessage?chat_id=${req.body.message.chat.id}&text=${message}-${reply}&parse_mode=HTML`
+  );
+  res.status(200).json({ name: `Hey this API is inprogress, Thanks for checking!` })
 }
 
 const sendRequestToOpenAI = async (message) => {
