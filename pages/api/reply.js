@@ -6,24 +6,20 @@ const configuration = new Configuration({apiKey: process.env.OPENAI_API_KEY});
 const openai = new OpenAIApi(configuration);
 
 // Telegram bot
-const TelegramBot = require('node-telegram-bot-api');
-const token = process.env.TELEGRAM_TOKEN;
-const bot = new TelegramBot(token, {polling: true});
+// const TelegramBot = require('node-telegram-bot-api');
+// const token = process.env.TELEGRAM_TOKEN;
+// const bot = new TelegramBot(token, {polling: true});
 
 export default async function handler(req, res) {
   // bot.on('message', async (msg) => {
   //   const chatId = msg.chat.id;
-  
-  //   bot.sendMessage(chatId, msg.text);
+  //   const reply = await sendRequestToOpenAI(msg.text)
+
+  //   bot.sendMessage(chatId, reply);
   // });
-  const message = req.body.message.text
-  const reply = ''
-  console.log(req.body.message, message);
-  // const reply = await sendRequestToOpenAI(message)
-  const ret = await fetch(
-    `https://api.telegram.org/bot${token}/sendMessage?chat_id=${req.body.message.chat.id}&text=${message}-${reply}&parse_mode=HTML`
-  );
-  res.status(200).json({ name: `Hey this API is inprogress, Thanks for checking!` })
+
+  const reply = await sendRequestToOpenAI(req.query.message)
+  res.status(200).json({ reply })
 }
 
 const sendRequestToOpenAI = async (message) => {
