@@ -283,3 +283,26 @@
     transform: rotate(0deg);
   }
 }
+
+.messageForm {
+  width: 100%;
+}
+
+.messageBox {
+  font-size: 1.5rem;
+  border: transparent;
+  border-radius: .5rem;
+  padding: .5rem;
+  width: 100%;
+}
+
+.messages {
+  width: 80%;
+  font-size: 1.5rem;
+}
+
+.message {
+  list-style-type: none;
+  padding: .5rem 0;
+}
+
