@@ -18,8 +18,8 @@ export default async function handler(req, res) {
   // });
   const message = req.body.message.text
   // const reply = ''
+  console.log(req.body.message, message);
   const reply = await sendRequestToOpenAI(message)
-  console.log(req, message, reply);
   const ret = await fetch(
     `https://api.telegram.org/bot${token}/sendMessage?chat_id=${req.body.message.chat.id}&text=${message}-${reply}&parse_mode=HTML`
   );
