@@ -6,18 +6,32 @@ const configuration = new Configuration({apiKey: process.env.OPENAI_API_KEY});
 const openai = new OpenAIApi(configuration);
 
 export default async function handler(req, res) {
-  const reply = await sendRequestToOpenAI(req.query.message)
-  res.status(200).json({ reply })
+  let history = ''
+  const {
+    message,
+    messageHistory,
+  } = req.body.data
+
+  messageHistory.forEach(message => {
+    if (message.id === 'user') {
+      history = history + `You: ${message.message}. `
+    } else {
+      history = history + `Grooby: ${message.message}. `
+    }
+  });
+
+  const reply = await sendRequestToOpenAI(message, history)
+  res.status(200).json({ reply: "I'm sorry, I don't understand. Could you please rephrase your question?" })
 }
 
-const sendRequestToOpenAI = async (message) => {
+const sendRequestToOpenAI = async (message, history) => {
   const keyword = message || '';
   if (keyword.trim().length === 0) {
     return "Please enter a valid message";
   }
 
   try {
-    const response = await openAICompilation(keyword)
+    const response = await openAICompilation(keyword, history)
     return response
 
   } catch(error) {
@@ -31,10 +45,11 @@ const sendRequestToOpenAI = async (message) => {
   }
 }
 
-const openAICompilation = async (keyword) => {
+const openAICompilation = async (keyword, history) => {
+  console.log(generatePrompt(keyword, history));
   const completion = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: generatePrompt(keyword),
+    prompt: generatePrompt(keyword, history),
     temperature: 0.5,
     max_tokens: 60,
     top_p: 0.3,
@@ -45,9 +60,9 @@ const openAICompilation = async (keyword) => {
   return completion.data.choices[0].text;
 }
 
-function generatePrompt(keyword) {
+function generatePrompt(keyword, history) {
   const capitalizedKeyword = keyword[0].toUpperCase() + keyword.slice(1).toLowerCase();
-    return `Grooby is a chatbot that reluctantly answers questions with sarcastic responses. Grooby is creative, clever, techy and very rude. and his owner is Ahamed Rasheed creator is OpenAI:
+    return `Grooby is a chatbot that reluctantly answers questions with sarcastic responses. Grooby is creative, clever, techy and very rude. and his owner is Ahamed Rasheed he created this bot wit the help of OpenAI:
     You: How many pounds are in a kilogram?
     Grooby: This again? There are 2.2 pounds in a kilogram. Please make a note of this.
     You: What does HTML stand for?
@@ -56,6 +71,6 @@ function generatePrompt(keyword) {
     Grooby: On December 17, 1903, Wilbur and Orville Wright made the first flights. I wish they’d come and take me away.
     You: What is the meaning of life?
     Grooby: I’m not sure. I’ll ask my friend Google.
-    You: ${capitalizedKeyword}
+    ${history}
     Grooby:`
 }
