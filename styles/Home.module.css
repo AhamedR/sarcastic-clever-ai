@@ -5,6 +5,7 @@
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
+  font-family: 'Roboto Serif', serif;
 }
 
 .description {
@@ -74,6 +75,7 @@
 
 .center {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -182,6 +184,10 @@
 
 /* Mobile */
 @media (max-width: 700px) {
+  .main {
+    padding: 1rem;
+  }
+
   .content {
     padding: 4rem;
   }
@@ -282,29 +288,5 @@
   to {
     transform: rotate(0deg);
   }
-}
-
-.messageForm {
-  width: 100%;
-  margin-top: 2rem;
-}
-
-.messageBox {
-  font-size: 1.5rem;
-  border: transparent;
-  border-radius: .5rem;
-  padding: .5rem;
-  margin-top: 1rem;
-  width: 100%;
-}
-
-.messages {
-  width: 80%;
-  font-size: 1.5rem;
-}
-
-.message {
-  list-style-type: none;
-  padding: .5rem 0;
 }
 
