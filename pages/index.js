@@ -8,6 +8,7 @@ import axios from 'axios';
 export default function Home() {
   const [messageHistory, setMessageHistory] = useState(["Start your conversation"])
   const [message, setMessage] = useState('')
+  const [isBotThinking, setIsBotThinking] = useState(false)
 
   const handleMessage = (event) => {
     setMessage(event.target.value)
@@ -21,6 +22,7 @@ export default function Home() {
     messageHistory.push(newMessage)
     setMessageHistory([...messageHistory])
     setMessage('')
+    setIsBotThinking(true)
 
     axios.get('/api/reply', { params: { message: newMessage} })
       .then(function (response) {
@@ -29,6 +31,7 @@ export default function Home() {
           messageHistory.push(response.data.reply)
           setMessageHistory([...messageHistory])
         }
+        setIsBotThinking(false)
       })
       .catch((error) => {
         // handle error
@@ -57,6 +60,7 @@ export default function Home() {
           </ul>
         </div>
         <form onSubmit={onSubmit} className={styles.messageForm}>
+          {isBotThinking && <p>Bot is Typing...</p>}
           <input className={styles.messageBox} type='text' name='message' value={message} onChange={handleMessage}/>
         </form>
       </main>
