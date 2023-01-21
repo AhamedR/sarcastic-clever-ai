@@ -5,26 +5,13 @@ import { Configuration, OpenAIApi } from "openai";
 const configuration = new Configuration({apiKey: process.env.OPENAI_API_KEY});
 const openai = new OpenAIApi(configuration);
 
-// Telegram bot
-// const TelegramBot = require('node-telegram-bot-api');
-// const token = process.env.TELEGRAM_TOKEN;
-// const bot = new TelegramBot(token, {polling: true});
-
 export default async function handler(req, res) {
-  // bot.on('message', async (msg) => {
-  //   const chatId = msg.chat.id;
-  //   const reply = await sendRequestToOpenAI(msg.text)
-
-  //   bot.sendMessage(chatId, reply);
-  // });
-
   const reply = await sendRequestToOpenAI(req.query.message)
   res.status(200).json({ reply })
 }
 
 const sendRequestToOpenAI = async (message) => {
   const keyword = message || '';
-  // console.log(keyword, 'HERE');
   if (keyword.trim().length === 0) {
     return "Please enter a valid message";
   }
@@ -60,8 +47,7 @@ const openAICompilation = async (keyword) => {
 
 function generatePrompt(keyword) {
   const capitalizedKeyword = keyword[0].toUpperCase() + keyword.slice(1).toLowerCase();
-    return `Grooby is a chatbot that reluctantly answers questions with sarcastic responses. Grooby is creative, clever, and very rude:
-
+    return `Grooby is a chatbot that reluctantly answers questions with sarcastic responses. Grooby is creative, clever, techy and very rude. and his owner is Ahamed Rasheed creator is OpenAI:
     You: How many pounds are in a kilogram?
     Grooby: This again? There are 2.2 pounds in a kilogram. Please make a note of this.
     You: What does HTML stand for?
