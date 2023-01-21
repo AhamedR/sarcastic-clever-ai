@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
+.user {
+  align-self: flex-end;
+  border-radius: .5rem .5rem 0 .5rem;
+  background: #313131;
+}
+
+.robot {
+  border-radius: .5rem .5rem .5rem 0;
+  background: #212938;
+}
+
+.messageForm {
+  width: 80%;
+  margin-top: 2rem;
+}
+
+.messages {
+  width: 80%;
+  font-size: 1.5rem;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.message {
+  padding: .5rem 1rem;
+  width: fit-content;
+  margin-top: 1rem;
+  max-width: 70%;
+  list-style-type: none;
+}
+
+.messageList {
+  display: flex;
+  flex-direction: column;
+  max-height: 40vh;
+  overflow: scroll;
+}
+
+.messageList {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.messageList::-webkit-scrollbar { 
+  display: none;
+}
+
+.messageInputContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 1rem;
+
+  @media (min-width: 700px) {
+    flex-direction: row;
+  }
+}
+
+.messageBox {
+  font-size: 1.5rem;
+  border: transparent;
+  border-radius: .5rem .5rem 0 0 ;
+  padding: .5rem;
+  width: 100%;
+
+  @media (min-width: 700px) {
+    border-radius: .5rem 0 0 .5rem;
+  }
+}
+
+.submit {
+  width: 100%;
+  padding: .8rem;
+  border: none;
+  border-radius: 0 0 .5rem .5rem;
+  font-size: 1rem;
+
+  @media (min-width: 700px) {
+    width: 20%;
+    border-radius: 0 .5rem .5rem 0;
+  }
+}
