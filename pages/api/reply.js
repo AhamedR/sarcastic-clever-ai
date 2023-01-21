@@ -21,7 +21,7 @@ export default async function handler(req, res) {
   });
 
   const reply = await sendRequestToOpenAI(message, history)
-  res.status(200).json({ reply: "I'm sorry, I don't understand. Could you please rephrase your question?" })
+  res.status(200).json({ reply })
 }
 
 const sendRequestToOpenAI = async (message, history) => {
