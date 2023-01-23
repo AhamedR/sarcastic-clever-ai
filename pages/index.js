@@ -17,7 +17,8 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.center}>
           <h2>Sarcastic clever AI</h2>
-          <p>by <a target='_blank' href='https://ahamedr.vercel.app/' rel="noreferrer">Ahamed</a></p>
+          <p className={styles.credit}>by <a target='_blank' href='https://ahamedr.vercel.app/' rel="noreferrer">Ahamed</a></p>
+          <small> OpenAI | NextJs</small>
         </div>
         <MessageBox/>
       </main>

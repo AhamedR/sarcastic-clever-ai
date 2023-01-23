@@ -5,7 +5,7 @@ import styles from '../../styles/messageBox/index.module.scss'
 
 const MessageBox = () => {
   const [messageHistory, setMessageHistory] = useState([{id: 'user', message: 'Hi'},{id: 'robot', message: 'Hello'}])
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState('Who developed you?')
   const [isBotThinking, setIsBotThinking] = useState(false)
   const messageListRef = useRef(null)
 
@@ -58,6 +58,15 @@ const MessageBox = () => {
       });
   }
 
+  const renderSupport = () => {
+    return (
+      <p className={styles.support}>
+        Btw you can help him build more apps by clicking <a href='https://www.buymeacoffee.com/ahamedr' target='_blank' rel="noreferrer">Support</a>.
+        <br/> and send your feedback trough <a href='https://lk.linkedin.com/in/ahamed-rasheed' target='_blank' rel="noreferrer">LinkedIn</a>
+      </p>
+    )
+  }
+
   return (
     <>
       <div className={styles.messages}>
@@ -67,7 +76,8 @@ const MessageBox = () => {
               className={[styles.message, message.id === 'user' ? styles.user: styles.robot].join(' ')}
               key={index}
             >
-              {message.message}
+              {message.message.replace('{{support}}', '')}
+              {message.message.includes('{{support}}') && renderSupport()}
             </li>
           )}
         </ul>
@@ -75,7 +85,7 @@ const MessageBox = () => {
       <form onSubmit={onSubmit} className={styles.messageForm}>
         {isBotThinking && <p>Bot is Typing...</p>}
         <div className={styles.messageInputContainer}>
-          <input className={styles.messageBox} type='text' name='message' value={message} onChange={handleMessage} autoComplete="off" />
+          <input className={styles.messageBox} type='text' name='message' placeholder='Type your question here' value={message} onChange={handleMessage} autoComplete="off" />
           <button className={styles.submit} type='submit'>Send</button>
         </div>
       </form>

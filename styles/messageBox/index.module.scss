@@ -18,7 +18,7 @@
 
 .messages {
   width: 80%;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-family: 'Roboto Condensed', sans-serif;
 }
 
@@ -58,10 +58,10 @@
 }
 
 .messageBox {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   border: transparent;
   border-radius: .5rem .5rem 0 0 ;
-  padding: .5rem;
+  padding: .5rem 1rem;
   width: 100%;
 
   @media (min-width: 700px) {
@@ -79,5 +79,23 @@
   @media (min-width: 700px) {
     width: 20%;
     border-radius: 0 .5rem .5rem 0;
+  }
+}
+
+.support {
+  padding-top: .5rem;
+  margin-top: .5rem;
+  border-top: #444444 1px solid;
+  font-size: 1rem;
+  line-height: 1.5rem;
+
+  a {
+    padding: .15rem .3rem;
+    border-radius: .2rem;
+    background: #011d50;
+
+    &:hover {
+      background: #022b79;
+    }
   }
 }
