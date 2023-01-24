@@ -38,6 +38,11 @@
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
+
+  --background-primary: #97efff;
+  --background-secondary: #97b8ff;
+  --background-third: #7ea7ff;
+  --background-fourth: #6092ff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -70,6 +75,9 @@
     --callout-border-rgb: 108, 108, 108;
     --card-rgb: 100, 100, 100;
     --card-border-rgb: 200, 200, 200;
+
+    --background-primary: #313131;
+    --background-secondary: #212938;
   }
 }
 
