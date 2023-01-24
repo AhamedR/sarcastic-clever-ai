@@ -9,7 +9,6 @@ const MessageBox = () => {
   const [isBotThinking, setIsBotThinking] = useState(false)
   const messageListRef = useRef(null)
 
-  const test= messageListRef.current
   useEffect(() => {
     scrollBottom()
   }, [messageHistory])
