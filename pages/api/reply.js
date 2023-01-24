@@ -46,7 +46,6 @@ const sendRequestToOpenAI = async (message, history) => {
 }
 
 const openAICompilation = async (keyword, history) => {
-  console.log(generatePrompt(keyword, history));
   const completion = await openai.createCompletion({
     model: "text-davinci-003",
     prompt: generatePrompt(keyword, history),
