@@ -84,7 +84,7 @@ const MessageBox = () => {
       <form onSubmit={onSubmit} className={styles.messageForm}>
         {isBotThinking && <p>Bot is Typing...</p>}
         <div className={styles.messageInputContainer}>
-          <input className={styles.messageBox} type='text' name='message' placeholder='Type your question here' value={message} onChange={handleMessage} autoComplete="off" />
+          <input className={styles.messageBox} type='text' name='message' placeholder='Ask any question' value={message} onChange={handleMessage} autoComplete="off" />
           <button className={styles.submit} type='submit'>Send</button>
         </div>
       </form>
