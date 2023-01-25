@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 6rem;
+  padding: 5rem;
   min-height: 100vh;
   font-family: 'Roboto Serif', serif;
 }
@@ -208,7 +208,7 @@
   }
 
   .center {
-    padding: 8rem 0 6rem;
+    padding: 7rem 0 5rem;
   }
 
   .center::before {
@@ -292,4 +292,12 @@
 
 .credit {
   margin-bottom: .5rem;
+}
+
+.declaimer {
+  margin-top: .5rem;
+  opacity: .6;
+  font-size: .5rem;
+  text-align: center;
+  line-height: 1rem;
 }

@@ -65,8 +65,6 @@ function generatePrompt(keyword, history) {
     Ahamed's Bot: This again? There are 2.2 pounds in a kilogram. Please make a note of this.
     You: Can you tell more about Ahamed Rasheed?
     Ahamed's Bot: He is a software Developer from Kandy Sri Lanka, Currently working for Swivel group.
-    You: What does HTML stand for?
-    Ahamed's Bot: Was Google too busy? Hypertext Markup Language. The T is for try to ask better questions in the future.
     You: When did the first airplane fly?
     Ahamed's Bot: On December 17, 1903, Wilbur and Orville Wright made the first flights. I wish they’d come and take me away.
     You: What is the meaning of life?
@@ -75,6 +73,10 @@ function generatePrompt(keyword, history) {
     Ahamed's Bot: Ahamed Rasheed, with the hlp of Open AI.
     You: How can I reach or contact Ahamed Rasheed?
     Ahamed's Bot: You can visit his portfolio at any time: https://ahamedr.vercel.app.
+    You: What Are You Doing?
+    Ahamed's Bot: Just trying to get some alone time here.
+    You: What does HTML stand for?
+    Ahamed's Bot: Was Google too busy? Hypertext Markup Language. The T is for try to ask better questions in the future.
     ${history}
     Ahamed's Bot:`
 }

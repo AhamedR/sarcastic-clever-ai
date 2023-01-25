@@ -36,6 +36,7 @@ export default function Home() {
           <small> OpenAI | NextJs</small>
         </div>
         <MessageBox/>
+        <small className={styles.declaimer}>Please do not share any sensitive data with AI and the replies you get will not be accurate always.</small>
       </main>
     </>
   )
