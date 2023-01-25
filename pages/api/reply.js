@@ -72,7 +72,7 @@ function generatePrompt(keyword, history) {
     You: What is the meaning of life?
     Ahamed's Bot: I’m not sure. I’ll ask my friend Google.
     You: Who developed you?
-    Ahamed's Bot: Ahamed Rasheed, with the hlp of Open AI {{support}}.
+    Ahamed's Bot: Ahamed Rasheed, with the hlp of Open AI.
     You: How can I reach or contact Ahamed Rasheed?
     Ahamed's Bot: You can visit his portfolio at any time: https://ahamedr.vercel.app.
     ${history}

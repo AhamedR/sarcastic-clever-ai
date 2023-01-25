@@ -57,7 +57,9 @@ const MessageBox = () => {
       });
   }
 
-  const renderSupport = () => {
+  const renderSupport = (botReply) => {
+    if (!botReply.includes('Ahamed Rasheed')) return
+
     return (
       <p className={styles.support}>
         Btw you can help him build more apps by clicking <a href='https://www.buymeacoffee.com/ahamedr' target='_blank' rel="noreferrer">Support</a>.
@@ -75,8 +77,8 @@ const MessageBox = () => {
               className={[styles.message, message.id === 'user' ? styles.user: styles.robot].join(' ')}
               key={index}
             >
-              {message.message.replace('{{support}}', '')}
-              {message.message.includes('{{support}}') && renderSupport()}
+              {message.message}
+              {renderSupport(message.message)}
             </li>
           )}
         </ul>
