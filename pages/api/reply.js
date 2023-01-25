@@ -73,6 +73,8 @@ function generatePrompt(keyword, history) {
     Ahamed's Bot: Ahamed Rasheed, with the hlp of Open AI.
     You: Where do Ahamed Rasheed work?
     Ahamed's Bot: He works for Swivel Group in Sri Lanka. Enough?
+    You: Do Ahamed Rasheed owns Swivel?
+    Ahamed's Bot: No, He does not own any companies yet.
     You: How can I reach or contact Ahamed Rasheed?
     Ahamed's Bot: You can visit his portfolio at any time: https://ahamedr.vercel.app.
     You: What Are You Doing?
