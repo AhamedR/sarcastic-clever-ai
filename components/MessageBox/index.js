@@ -86,10 +86,23 @@ const MessageBox = () => {
       <form onSubmit={onSubmit} className={styles.messageForm}>
         {isBotThinking && <p>Bot is Typing...</p>}
         <div className={styles.messageInputContainer}>
-          <input className={styles.messageBox} type='text' name='message' placeholder='Ask any question, Eg: Who developed you ?' value={message} onChange={handleMessage} autoComplete="off" />
-          <button className={styles.submit} type='submit'>Send</button>
+          <input disabled className={styles.messageBox} type='text' name='message' placeholder='Ask any question, Eg: Who developed you ?' value={message} onChange={handleMessage} autoComplete="off" />
+          <button disabled className={styles.submit} type='submit'>Send</button>
         </div>
       </form>
+      <div className={styles.modal}>
+        <div className={styles.content}>
+          <h3 className={styles.title}>Sorry!</h3>
+          <p>
+            Thank you for interest, but unfortunately due to high traffic our current quota exceeded the limit. Please check back later in few days. 
+          </p>
+          <p className={styles.signOff}>Thank you for understanding!</p>
+          <p className={styles.footer}>
+            <a href='https://lk.linkedin.com/in/ahamed-rasheed' target='_blank' rel="noreferrer">LinkedIn</a>
+            <a href='https://www.buymeacoffee.com/ahamedr' target='_blank' rel="noreferrer">Support</a>
+          </p>
+        </div>
+      </div>
     </>
   )
 }

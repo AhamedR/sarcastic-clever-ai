@@ -14,6 +14,7 @@
 .messageForm {
   width: 80%;
   margin-top: 2rem;
+  filter: blur(5px);
 }
 
 .messages {
@@ -96,4 +97,39 @@
       background: var(--background-fourth);
     }
   }
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff70;
+}
+
+.content {
+  width: 80%;
+  background: var(--background-secondary);
+  border-radius: 1rem;
+  padding: 3rem 4rem;
+}
+
+.title {
+  margin-bottom: 1rem;
+}
+
+.signOff {
+  margin-top: .5rem;
+  font-size: .8rem;
+}
+
+.footer {
+  @extend .support;
+  font-size: .8rem;
+  display: flex;
+  gap: .5rem;
 }
